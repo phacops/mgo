@@ -1665,6 +1665,29 @@ func (c *Collection) DropAllIndexes() error {
 	return nil
 }
 
+// DropAllIndexes drops all the indexes from the c collection
+func (c *Collection) DropAllIndexes() error {
+	session := c.Database.Session
+	session.ResetIndexCache()
+
+	session = session.Clone()
+	defer session.Close()
+
+	db := c.Database.With(session)
+	result := struct {
+		ErrMsg string
+		Ok     bool
+	}{}
+	err := db.Run(bson.D{{"dropIndexes", c.Name}, {"index", "*"}}, &result)
+	if err != nil {
+		return err
+	}
+	if !result.Ok {
+		return errors.New(result.ErrMsg)
+	}
+	return nil
+}
+
 // nonEventual returns a clone of session and ensures it is not Eventual.
 // This guarantees that the server that is used for queries may be reused
 // afterwards when a cursor is received.

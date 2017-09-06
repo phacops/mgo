@@ -5285,7 +5285,7 @@ func getRFC2253NameString(RDNElements *pkix.RDNSequence) string {
 	var replacer = strings.NewReplacer(",", "\\,", "=", "\\=", "+", "\\+", "<", "\\<", ">", "\\>", ";", "\\;")
 	//The elements in the sequence needs to be reversed when converting them
 	for i := len(*RDNElements) - 1; i >= 0; i-- {
-		var nameAndValueList = make([]string,len((*RDNElements)[i]))
+		var nameAndValueList = make([]string, len((*RDNElements)[i]))
 		for j, attribute := range (*RDNElements)[i] {
 			var shortAttributeName = rdnOIDToShortName(attribute.Type)
 			if len(shortAttributeName) <= 0 {

@@ -3,9 +3,10 @@ package mgo
 import (
 	"crypto/x509/pkix"
 	"encoding/asn1"
+	"testing"
+
 	"github.com/globalsign/mgo/bson"
 	. "gopkg.in/check.v1"
-	"testing"
 )
 
 type S struct{}

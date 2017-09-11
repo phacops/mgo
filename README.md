@@ -36,6 +36,7 @@ Further PR's (with tests) are welcome, but please maintain backwards compatibili
 * Gracefully recover from a temporarily unreachable server ([details](https://github.com/globalsign/mgo/pull/69))
 * Allow dropping all indexes on a collection ([details](https://github.com/globalsign/mgo/pull/25))
 * Annotates log entries/profiler output with optional appName on 3.4+ ([details](https://github.com/globalsign/mgo/pull/28))
+* Support for read-only [views](https://docs.mongodb.com/manual/core/views/) in 3.4+ ([details](https://github.com/globalsign/mgo/pull/33))
 
 ---
 
